@@ -1,6 +1,8 @@
 package module01
 
-import "testing"
+import (
+	"testing"
+)
 
 type numInListTest struct {
 	argSlice []int
@@ -62,6 +64,62 @@ func TestRevString(t *testing.T) {
 
 	for i, test := range revStringTests {
 		if output := RevString(test.str); output != test.expected {
+			t.Errorf("output %s is not equal to expected %s | test data %v on line %d in dataset", output, test.expected, test, i-1)
+		}
+	}
+}
+
+type fizzBuzzTest struct {
+	number   int
+	expected string
+}
+
+func TestFizzBuzz(t *testing.T) {
+	var FizBuzzTests = []fizzBuzzTest{
+		{3, "1 2 Fizz"},
+		{5, "1 2 Fizz 4 Buzz"},
+		{15, "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"},
+	}
+
+	for i, test := range FizBuzzTests {
+		if output := FizzBuzz(test.number); output != test.expected {
+			t.Errorf("output %s is not equal to expected %s | test data %v on line %d in dataset", output, test.expected, test, i-1)
+		}
+	}
+}
+
+type decToBaseTest struct {
+	dec      int
+	base     int
+	expected string
+}
+
+func TestDecToBase(t *testing.T) {
+	var DecToBaseTests = []decToBaseTest{
+		{1, 2, "1"},
+		{2, 2, "10"},
+		{7, 3, "21"},
+		{14, 2, "1110"},
+		{14, 16, "E"},
+		{17, 16, "11"},
+		{3735928559, 2, "11011110101011011011111011101111"},
+		{3735928559, 3, "100122100210211112102"},
+		{3735928559, 4, "3132223123323233"},
+		{3735928559, 5, "30122344203214"},
+		{3735928559, 6, "1414413525315"},
+		{3735928559, 7, "161402603666"},
+		{3735928559, 8, "33653337357"},
+		{3735928559, 9, "10570724472"},
+		{3735928559, 10, "3735928559"},
+		{3735928559, 11, "164791A470"},
+		{3735928559, 12, "8831A383B"},
+		{3735928559, 13, "476CC321C"},
+		{3735928559, 14, "276253DDD"},
+		{3735928559, 15, "16CEB1BDE"},
+		{3735928559, 16, "DEADBEEF"},
+	}
+	for i, test := range DecToBaseTests {
+		if output := DecToBase(test.dec, test.base); output != test.expected {
 			t.Errorf("output %s is not equal to expected %s | test data %v on line %d in dataset", output, test.expected, test, i-1)
 		}
 	}

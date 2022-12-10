@@ -17,4 +17,7 @@ func main() {
 
 	// Reverse string
 	fmt.Println("Reverse string", module01.RevString("String"))
+
+	// Fizz buzz
+	fmt.Println(module01.FizzBuzz(15))
 }
